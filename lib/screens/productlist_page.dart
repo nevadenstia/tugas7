@@ -4,7 +4,8 @@ import 'package:tugas7/widgets/shop_card.dart';
 class ProductListPage extends StatelessWidget {
   final List<ShopProducts> productList;
 
-  const ProductListPage({Key? key, required this.productList}) : super(key: key);
+  const ProductListPage({Key? key, required this.productList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,6 @@ class ProductListPage extends StatelessWidget {
                 Text('Rating: ${productList[index].ratings}'),
                 Text('Ulasan: ${productList[index].reviews}'),
               ],
-            ),
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(productList[index].imageUrl),
             ),
           );
         },

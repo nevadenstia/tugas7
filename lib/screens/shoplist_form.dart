@@ -254,6 +254,24 @@ class _ShopFormPageState extends State<ShopFormPage> {
                             );
                           },
                         );
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text(
+                                  'Produk gagal disimpan! Cek kembali input.'),
+                              actions: [
+                                TextButton(
+                                  child: const Text('OK'),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       }
                       _formKey.currentState!.reset();
                     },

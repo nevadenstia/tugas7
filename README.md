@@ -1,3 +1,176 @@
+**README TUGAS 9**
+
+*Pertanyaan 1*
+Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+    Ya, di Flutter dan Django, bisa mengambil data JSON tanpa membuat model terlebih dahulu. Walau begitu, keputusan antara menggunakan model atau tidak tergantung pada kompleksitas aplikasi dan preferensi pengembang. Menggunakan model memastikan keamanan, validasi, dan kode yang terorganisir. Tanpa model memberikan fleksibilitas dan memungkinkan pengembangan cepat. Pilihannya tergantung pada kebutuhan proyek dan preferensi pribadi.
+
+*Pertanyaan 2*
+Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+    CookieRequest adalah instance dari kelas yang terdapat dalam paket eksternal (pbp_django_auth). Fungsi utamanya adalah untuk membuat atau mengelola permintaan HTTP dengan menyertakan informasi kuki (cookie), yang sering digunakan dalam konteks authentikasi atau interaksi dengan server.
+
+    Instance CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter, seperti yang dilakukan dengan menggunakan Provider, agar informasi authentikasi atau data kuki dapat diakses dan dikelola secara global. Ini memungkinkan komponen-komponen berbeda dalam aplikasi untuk berinteraksi dengan server dan berbagi informasi otentikasi tanpa perlu melewati data tersebut secara manual antar komponen. Dengan membagikan instance ini, status authentikasi dapat diakses dan diperbarui secara konsisten di seluruh aplikasi.
+
+*Pertanyaan 3*
+Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+    1. Definisi Model: Buat model Flutter yang merepresentasikan struktur data JSON.
+    2. Konversi JSON ke Objek Model: Tambahkan metode di model untuk mengonversi JSON ke objek model.
+    3. HTTP Request untuk Mengambil Data: Gunakan package HTTP untuk melakukan request ke web service dan dapatkan respons.
+    4. Decode JSON Response: Gunakan dart:convert untuk mendecode respons JSON menjadi Map.
+    5. Konversi ke Objek Model: Gunakan model dan metode konversi untuk membuat objek Flutter dari respons JSON.
+    6. Tampilkan Data dengan Widget Flutter: Gunakan widget seperti FutureBuilder dan ListView.builder untuk menampilkan data dalam aplikasi Flutter.
+
+*Pertanyaan 4*
+Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+Mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter melibatkan beberapa langkah sebagai berikut:
+
+1. Input Data Akun dari Flutter:
+    Pengguna memasukkan data akun (seperti username dan password) pada antarmuka pengguna Flutter.
+
+2. HTTP Request untuk Autentikasi:
+    Dengan menggunakan package HTTP, Flutter mengirim HTTP request ke endpoint autentikasi Django, dalam hal ini endpoint login.
+
+3. Verifikasi di Django:
+    Django menerima request autentikasi, dan melakukan verifikasi data akun yang diterima. Jika data akun valid, Django menghasilkan respons sukses bersama dengan informasi pengguna yang dapat disertakan.
+
+4. Tanggapan ke Flutter:
+    Flutter menerima respons dari Django. Jika autentikasi sukses, Flutter dapat menyimpan status login dan informasi pengguna untuk digunakan di seluruh aplikasi.
+
+5. Navigasi Menu:
+    Jika autentikasi sukses, Flutter dapat menavigasi pengguna ke menu atau halaman yang sesuai. Ini melibatkan perubahan tata letak antarmuka pengguna untuk menampilkan menu yang relevan.
+
+6. Logout:
+    Autentikasi juga melibatkan kemampuan untuk logout. Ketika pengguna memilih logout, Flutter kembali melakukan HTTP request ke endpoint logout Django, dan Django mengakhiri sesi pengguna.
+
+*Pertanyaan 5*
+Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+Pada tugas ini, terdapat beberapa widget Flutter yang digunakan. Berikut adalah daftar widget beserta penjelasan fungsinya:
+
+1. **Drawer:**
+   - **Fungsi:** Digunakan untuk membuat tampilan drawer (layar samping) pada aplikasi.
+   - **Penggunaan:** Digunakan sebagai root container untuk menampung daftar menu yang dapat diakses pengguna.
+
+2. **ListView:**
+   - **Fungsi:** Digunakan untuk membuat daftar tata letak linier yang dapat di-scroll.
+   - **Penggunaan:** Menyusun daftar menu di dalam drawer agar dapat di-scroll.
+
+3. **DrawerHeader:**
+   - **Fungsi:** Menyediakan header khusus untuk drawer.
+   - **Penggunaan:** Menampilkan judul dan deskripsi pada bagian atas drawer.
+
+4. **ListTile:**
+   - **Fungsi:** Mendefinisikan satu baris dalam daftar.
+   - **Penggunaan:** Menyediakan item-item menu di dalam drawer.
+
+5. **Icon:**
+   - **Fungsi:** Menampilkan ikon dari ikon set bawaan Flutter.
+   - **Penggunaan:** Menampilkan ikon di sebelah kiri setiap item menu dalam drawer.
+
+6. **Text:**
+   - **Fungsi:** Menampilkan teks.
+   - **Penggunaan:** Menampilkan judul, deskripsi, dan label pada beberapa bagian dalam aplikasi.
+
+7. **Material:**
+   - **Fungsi:** Widget dasar yang memberikan desain dasar material design.
+   - **Penggunaan:** Menangani pewarnaan latar belakang pada `ShopCard` agar sesuai dengan properti warna dari `ShopItem`.
+
+8. **InkWell:**
+   - **Fungsi:** Membuat area responsif terhadap sentuhan.
+   - **Penggunaan:** Mengaktifkan respons ketika item di dalam `ShopCard` di-tap.
+
+9. **ScaffoldMessenger:**
+   - **Fungsi:** Menyediakan metode untuk menampilkan snackbar (layar kecil yang muncul di bagian bawah aplikasi).
+   - **Penggunaan:** Menampilkan snackbar ketika item di-tap dalam `ShopCard`.
+
+10. **SnackBar:**
+    - **Fungsi:** Menampilkan pesan notifikasi sementara di bagian bawah layar.
+    - **Penggunaan:** Menampilkan pesan notifikasi ketika item di-tap dalam `ShopCard`.
+
+11. **Padding:**
+    - **Fungsi:** Menambahkan ruang (padding) di sekitar widget.
+    - **Penggunaan:** Digunakan untuk memberikan ruang antar elemen pada beberapa bagian dalam aplikasi.
+
+12. **Column:**
+    - **Fungsi:** Menyusun child widget dalam kolom vertikal.
+    - **Penggunaan:** Mengatur tata letak dari ikon dan teks di dalam `ShopCard`.
+
+13. **Provider:**
+    - **Fungsi:** Digunakan untuk melakukan state management (manajemen keadaan) di aplikasi Flutter.
+    - **Penggunaan:** Digunakan untuk mengakses data yang dibutuhkan oleh `ShopCard`.
+
+14. **BuildContext:**
+    - **Fungsi:** Merepresentasikan lokasi dalam widget tree.
+    - **Penggunaan:** Digunakan untuk navigasi antar halaman (page) dalam aplikasi.
+
+15. **Navigator:**
+    - **Fungsi:** Menangani navigasi antar halaman dalam aplikasi.
+    - **Penggunaan:** Digunakan untuk berpindah ke halaman lain saat item di-tap.
+
+16. **MaterialPageRoute:**
+    - **Fungsi:** Membuat transisi animasi saat berpindah halaman.
+    - **Penggunaan:** Digunakan untuk mengatur animasi saat berpindah halaman.
+
+17. **async/await:**
+    - **Fungsi:** Digunakan untuk melakukan operasi asinkron (non-blokir) pada Flutter.
+    - **Penggunaan:** Digunakan dalam pemrosesan logout untuk menunggu respons server.
+
+18. **SnackBar:**
+    - **Fungsi:** Widget yang menampilkan pesan notifikasi sementara di bagian bawah layar.
+    - **Penggunaan:** Menampilkan pesan notifikasi ketika user melakukan logout.
+
+
+*Pertanyaan 6*
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+Tentu, berikut ringkasan singkat dalam Bahasa Indonesia:
+
+**Setup Django:**
+1. **Buat Aplikasi Django Authentication:**
+   - Buat aplikasi django dengan nama 'authentication'.
+   - Tambahkan 'authentication' ke INSTALLED_APPS di file settings Django.
+
+2. **Install dan Konfigurasi Django-Cors-Headers:**
+   - Install library `django-cors-headers` menggunakan perintah `pip install django-cors-headers`.
+   - Tambahkan 'corsheaders' ke INSTALLED_APPS dan middleware di settings.
+
+3. **Tambahkan Variabel dan Buat View Login:**
+   - Tambahkan variabel terkait CORS di settings.
+   - Buat metode view untuk login di authentication/views.py.
+   - Tentukan routing URL untuk view login di authentication/urls.py.
+   - Sertakan authentication URLs di file URLs utama (shopping_list/urls.py).
+
+**Setup Flutter:**
+4. **Install Package Flutter:**
+   - Install package `provider` dan `pbp_django_auth` dengan perintah `flutter pub add provider` dan `flutter pub add pbp_django_auth`.
+
+5. **Modifikasi Root Widget dan Buat Halaman Login:**
+   - Modifikasi widget root di main.dart untuk menyediakan instance CookieRequest menggunakan Provider.
+   - Buat halaman login.dart dengan fungsionalitas login.
+   - Tautkan halaman login sebagai halaman utama di main.dart.
+
+6. **Implementasi Fetch Data dari Django:**
+   - Implementasi fetching data dari Django dalam file list_product.dart.
+   - Gunakan Quicktype untuk menghasilkan model Dart dari data JSON.
+
+7. **Tambahkan Produk ke Left Drawer:**
+   - Tambahkan halaman produk ke left_drawer.dart.
+
+8. **Implementasi Form Flutter dengan Django:**
+   - Hubungkan halaman shoplist_form.dart dengan CookieRequest.
+   - Ubah tombol tambah untuk mengirim data ke Django.
+
+9. **Implementasi Fitur Logout:**
+   - Tambahkan fungsi view untuk logout di authentication/views.py.
+   - Tentukan routing URL untuk logout di authentication/urls.py.
+   - Modifikasi shop_card.dart untuk menambahkan fitur logout.
+
+10. **Uji Coba Aplikasi:**
+    - Jalankan aplikasi Flutter dan uji coba login, penambahan produk, melihat daftar produk, dan logout.
+
+
 **README TUGAS 8**
 
 *Pertanyaan 1*

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:tugas7/screens/list_product.dart';
 import 'package:tugas7/screens/menu.dart';
-import 'package:tugas7/screens/productlist_page.dart';
 import 'package:tugas7/screens/shoplist_form.dart';
-import 'package:tugas7/widgets/shop_card.dart';
 
 class LeftDrawer extends StatelessWidget {
-  final List<ShopProducts> productList;
-
-  const LeftDrawer({Key? key, required this.productList}) : super(key: key);
+  const LeftDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +58,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ShopFormPage(
-                      productList: [],
-                    ),
+                    builder: (context) => const ShopFormPage(),
                   ));
             },
           ),
@@ -71,13 +67,19 @@ class LeftDrawer extends StatelessWidget {
             title: const Text('Lihat Produk'),
             // Bagian redirection ke ShopFormPage
             onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProductListPage(
-                      productList: [],
-                    ),
-                  ));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const ProductPage()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Produk'),
+            onTap: () {
+              // Route menu ke halaman produk
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+              );
             },
           ),
         ],
